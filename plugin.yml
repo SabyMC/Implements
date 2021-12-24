@@ -1,1 +1,8 @@
-
+---
+name: APIs
+description: Collection of APIs and libraries used in SabyMC.
+version: 1.0.0
+main: APIs\Loader
+api: 4.x.x
+author: SabyMC-DevTeam
+...
