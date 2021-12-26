@@ -23,7 +23,10 @@ declare(strict_types=1);
 
 namespace pmmp\RconServer;
 
+use pocketmine\utils\SingletonTrait;
+
 class RconConfig{
+	use SingletonTrait;
 
 	/** @var string */
 	private $ip;
@@ -35,6 +38,8 @@ class RconConfig{
 	private $password;
 
 	public function __construct(string $ip, int $port, int $maxConnections, string $password){
+		self::setInstance($this);
+		
 		$this->ip = $ip;
 		$this->port = $port;
 		$this->maxConnections = $maxConnections;
