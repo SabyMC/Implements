@@ -36,14 +36,13 @@ final class ScoreboardAPI {
 		);
 		
 		$player->getNetworkSession()->sendDataPacket($pk);
-		$this->scoreboards[$player->getName()] = $objectiveName;
+		$this->scoreboards[$player->getName()] = $player;
 	}
 	
 	public function remove(Player $player): void 
 	{
 		if($this->hasScoreboard($player)) {
-			$objectiveName = $this->getObjectiveName($player);
-			$pk = RemoveObjectivePacket::create($objectiveName);
+			$pk = RemoveObjectivePacket::create($player->getName());
 			
 			$player->getNetworkSession()->sendDataPacket($pk);
 			unset($this->scoreboards[$player->getName()]);
@@ -62,10 +61,9 @@ final class ScoreboardAPI {
 	{
 		if(!$this->hasScoreboard($player)) return;
 		if($score > 15 || $score < 1) return;
-		$objectiveName = $this->getObjectiveName($player);
 		
 		$entry = new ScorePacketEntry();
-		$entry->objectiveName = $objectiveName;
+		$entry->objectiveName = $player->getName();
 		$entry->type = ScorePacketEntry::TYPE_FAKE_PLAYER;
 		$entry->customName = $message;
 		$entry->score = $score;
@@ -82,9 +80,5 @@ final class ScoreboardAPI {
 	private function hasScoreboard(Player $player): bool
 	{
 		return isset($this->scoreboards[$player->getName()]);
-	}
-	
-	public function getObjectiveName(Player $player) : null|string {
-		return $this->scoreboards[$player->getName()];
 	}
 }
