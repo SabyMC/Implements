@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace APIs;
+namespace loader;
 
 use pmmp\RconServer\Main;
 use pocketmine\plugin\PluginBase;

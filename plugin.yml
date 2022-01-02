@@ -1,8 +1,8 @@
 ---
-name: APIs
-description: Collection of APIs and libraries used in SabyMC.
+name: Implements
+description: Plugin that implements plugins, APIs and libraries for use in SabyMC.
 version: 1.0.0
-main: APIs\Loader
+main: loader\Loader
 api: 4.x.x
 author: SabyMC-DevTeam
 ...
