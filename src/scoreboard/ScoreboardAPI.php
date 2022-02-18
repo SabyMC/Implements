@@ -53,7 +53,7 @@ final class ScoreboardAPI {
 	public function setLines(Player $player, array $lines): void
 	{
 		foreach($lines as $score => $line) {
-			if($score > 15) break;
+			if($score >= 15) break;
 			$this->setLine($player, $score + 1, $line);
 		}
 	}
